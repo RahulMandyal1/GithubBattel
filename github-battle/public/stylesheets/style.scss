@@ -293,7 +293,7 @@ $tertiary: #222;
   padding: .8rem 4rem;
   letter-spacing: .2rem;
   font-size: 2rem;
-  background-color: #000;
+  background-color:$secondary;
   border-radius:.6rem;
   a{
     color: #fff;
@@ -303,3 +303,45 @@ $tertiary: #222;
 // user profile container ends here 
 // battle container end here 
 
+
+// Result battle starts here 
+.result-container{
+  padding: 2% 6%;
+  @extend .flex-row-center;
+  .result-card{
+    margin: 0 4rem;
+    background-color: $secondary;
+    padding: 2rem 4rem;
+    .col-center{
+      display : flex;
+      flex-direction: column;
+      justify-content : center;
+      align-items : center;
+    }
+    img{
+      width: 15rem;
+      margin: 1rem;
+    }
+    .winner{
+      font-size: 2rem;
+      font-weight: 600;
+      color: #222;
+    }
+    h6{
+      margin: 1rem 0;
+    }
+    .username{
+      color: $primary;
+    }
+    i{
+      margin-right:1rem;
+      font-size: 1.6rem;
+    }
+    p{
+      margin: 1rem 0;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+// Result battle ends here 

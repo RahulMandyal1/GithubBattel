@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function Header() {
   return (
     <header className="navigation-bar">
-      <nav className="menus">
+      <nav className="menus w-100 flex-row-center">
         <NavLink to="/" activeClassName="active-menu" exact>
           Popular
         </NavLink>
@@ -12,9 +12,6 @@ export default function Header() {
           Battle
         </NavLink>
       </nav>
-      <div className="darkmode">
-        <i class="fas fa-moon"></i>
-      </div>
     </header>
   );
 }

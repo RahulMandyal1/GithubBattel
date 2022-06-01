@@ -3,7 +3,7 @@ import React from "react";
 export default function Loader() {
   return (
     <section>
-      <div class="loading loading03">
+      <div className="loading loading03">
         <span>L</span>
         <span>O</span>
         <span>A</span>

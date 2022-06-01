@@ -7,53 +7,62 @@ export default class BattleResult extends Component {
     this.state = {
       firstPlayer: null,
       secondPlayer: null,
-      userOneScore: null,
-      userTwoScore: null,
     };
   }
   componentDidMount() {
     const { playerOne, playerTwo } = queryString.parse(
       this.props.location.search
     );
-    this.getUser(playerOne, "firstPlayer");
-    this.getUser(playerTwo, "secondPlayer");
+    this.userProfiles([playerOne, playerTwo]).then((profiles) => {
+      this.setState({
+        firstPlayer: profiles[0],
+        secondPlayer: profiles[1],
+      });
+    });
   }
 
-  getUser = (username, name) => {
-    let step = this.state.nStep;
+  // // // to get a single user profile
+  userProfile = (username) => {
     return fetch(`https://api.github.com/users/${username}`)
       .then((res) => res.json())
-      .then((profile) => {
-        this.setState({
-          [name]: profile,
-          nStep: step + 1,
-        });
+      .then((data) => {
+        return data;
       });
+  };
+
+  // // to get multiple users profiles
+  userProfiles = async (userData) => {
+    let bothUsers = userData.map((username) => this.userProfile(username));
+    let users = await Promise.all(bothUsers);
+    return users;
   };
 
   // to calculate  the user score
   getScore = (user) => {
     let followers = user.followers;
     let publicRepos = user.public_repos;
-    return followers + publicRepos;
+    const score = followers + publicRepos;
+    return score;
   };
   render() {
-    if (!this.state.firstPlayer && !this.state.userOneScore) {
+    if (!this.state.firstPlayer && !this.state.secondPlayer) {
       return <Loader />;
     } else {
+      let firstUserScore = this.getScore(this.state.firstPlayer);
+      let secondPlayerScore = this.getScore(this.state.secondPlayer);
       return (
         <>
-          <div className="container">
+          <div className="container result-container">
             <UserProfileGenerator
               player={this.state.firstPlayer}
-              playerScore={this.state.userOneScore}
-              playerTwoScore={this.state.userTwoScore}
+              playerScore={firstUserScore}
+              playerTwoScore={secondPlayerScore}
             />
 
             <UserProfileGenerator
               player={this.state.secondPlayer}
-              playerScore={this.state.userTwoScore}
-              playerTwoScore={this.state.userOneScore}
+              playerScore={secondPlayerScore}
+              playerTwoScore={firstUserScore}
             />
           </div>
         </>
@@ -65,16 +74,18 @@ function UserProfileGenerator(props) {
   let { player, playerScore, playerTwoScore } = props;
   return (
     <>
-      <div className="Card">
+      <div className="result-card">
         <div className="col-center">
-          <h4>{playerScore > playerTwoScore ? "Winner" : "Loser"}</h4>
+          <h4 className="winner">
+            {playerScore > playerTwoScore ? "Winner" : "Loser"}
+          </h4>
           <img src={player.avatar_url} alt="players profile"></img>
           <h6>{playerScore}</h6>
-          <h2>{player.login}</h2>
-          <p>
-            <i className="fas fa-user user">{player.name}</i>
-          </p>
+          <h2 className="username">{player.login}</h2>
         </div>
+        <p>
+          <i className="fas fa-user user">{player.name}</i>
+        </p>
         <p>
           <i className="fas fa-users followers"></i>
           {player.followers}

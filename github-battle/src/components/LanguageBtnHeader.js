@@ -10,6 +10,7 @@ export default function LanguageButtonHeader(props) {
             <button
               className={value === language ? "active-menu" : ""}
               onClick={handleClick}
+              key={language}
             >
               {language}
             </button>
