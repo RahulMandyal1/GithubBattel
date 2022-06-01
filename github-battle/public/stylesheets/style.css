@@ -1,7 +1,3 @@
-.container {
-  background-color: red;
-}
-
 /* common */
 .loading {
   font-size: 84px;
@@ -116,6 +112,53 @@ html body {
   color: #bb2e1f;
 }
 
+.flex-46 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 46%;
+          flex: 0 1 46%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+
+.users {
+  color: #FFBF74;
+}
+
+.winner {
+  color: #FFD700;
+}
+
+.center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.error {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #cd301f;
+  display: block;
+  margin: 1rem 0;
+}
+
 #root {
   width: 100%;
 }
@@ -136,7 +179,6 @@ html body {
 
 #root button {
   border: none;
-  background: transparent;
   display: inline-block;
 }
 
@@ -147,6 +189,10 @@ html body {
 
 .navigation-bar nav a {
   margin-right: 2rem;
+}
+
+.header button {
+  background-color: transparent;
 }
 
 .header nav button {
@@ -222,5 +268,109 @@ html body {
   color: #000;
   font-size: 1.3rem;
   font-weight: 500;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.wrapper h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.usernameInput-container h2 {
+  text-align: center;
+}
+
+.form-group {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.form-group input {
+  padding: .6rem;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 45%;
+          flex: 0 1 45%;
+  border: .1rem solid #ddd;
+}
+
+.form-group button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 45%;
+          flex: 0 1 45%;
+  background-color: #ebebeb;
+  border: .1rem solid red;
+}
+
+.instruction-container {
+  padding: 4% 0;
+}
+
+.instruction-container .instruction-card h2 {
+  text-align: center;
+  margin: 2rem 0;
+  color: #333;
+}
+
+.instruction-container .instruction-icon {
+  background-color: #ebebeb;
+  padding: 2rem;
+}
+
+.instruction-container .instruction-icon i {
+  font-size: 8rem;
+}
+
+.instruction-container .instruction-icon .battle {
+  color: #333;
+}
+
+.userprofile-container {
+  width: 100%;
+  background-color: #ebebeb;
+  border: .1rem solid #ddd;
+  padding: 1rem;
+  border-radius: .6rem;
+}
+
+.userprofile-container h4 {
+  margin-left: 1rem;
+}
+
+.userprofile-container img {
+  width: 5rem;
+  border-radius: 50%;
+}
+
+.battle-button-container {
+  margin: 3rem 0;
+}
+
+.battle-now {
+  padding: .8rem 4rem;
+  letter-spacing: .2rem;
+  font-size: 2rem;
+  background-color: #000;
+  border-radius: .6rem;
+}
+
+.battle-now a {
+  color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

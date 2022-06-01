@@ -7,7 +7,7 @@ export default class popular extends Component {
     super();
     this.state = {
       data: null,
-      language: "all",
+      language: "All",
       error: "",
     };
   }
@@ -33,7 +33,6 @@ export default class popular extends Component {
   // this method is to change  the state value
   handleClick = ({ target }) => {
     let value = target.innerText;
-    value = value.toLowerCase();
     let allUsers = fetch(
       `https://api.github.com/search/repositories?q=stars:%3E1+language:${value}&sort=stars&order=desc&type=Repositories`
     )

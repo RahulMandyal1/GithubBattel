@@ -1,6 +1,6 @@
-@import "popularepo";
 @import "loader";
-* {
+
+*{
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -20,6 +20,20 @@ $secondary: #ebebeb;
 $black: #000;
 $tertiary: #222;
 
+
+.user{
+  color: #EF7373;
+}
+.followers  {
+  color: #81C3F5;
+}
+.following{
+  color: green;
+}
+
+.light-black{
+  color: #333;
+}
 // all common used classes
 .flex-row {
   display: flex;
@@ -35,6 +49,50 @@ $tertiary: #222;
 .primary-bold {
   font-weight: 700;
   color: $primary;
+}
+
+.flex-46{
+  flex:  0 1 46%;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.heading{
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+.users{
+  color:#FFBF74 ;
+}
+
+.winner{
+  color:  #FFD700;
+}
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error{
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #cd301f;
+  display: block;
+  margin: 1rem 0;
+}
+
+.col-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 // all the basic general styles
 #root {
@@ -53,7 +111,6 @@ $tertiary: #222;
   }
   button {
     border: none;
-    background: transparent;
     display: inline-block;
   }
 
@@ -62,7 +119,6 @@ $tertiary: #222;
     font-weight: 700;
   }
 }
-
 // navigation bar start from here
 .navigation-bar {
   @extend .flex-row;
@@ -76,6 +132,9 @@ $tertiary: #222;
 
 // button header starts  here
 .header {
+  button{
+    background-color: transparent
+  }
   @extend .flex-row-center;
   nav {
     button {
@@ -152,5 +211,95 @@ $tertiary: #222;
     font-size: 1.3rem;
     font-weight: 500;
   }
-  //cards stylign ends here
 }
+
+// battle container start from here 
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  h2{
+    font-size: 2rem;
+    color: #333;
+  }
+}
+
+.usernameInput-container{
+  h2{
+    text-align: center;
+  }
+}
+
+.form-group{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0 ;
+  input{
+    padding: .6rem;
+    flex:  0 1 45%;
+    border: .1rem solid #ddd;
+  }
+  button{
+   flex:  0 1 45%;
+   background-color: $secondary;
+   border: .1rem solid red;
+  }
+}
+
+//instruction-container 
+
+.instruction-container{
+  padding: 4% 0;
+  .instruction-card{
+    h2{
+      text-align: center;
+      margin: 2rem 0;
+      color: #333;
+    }
+  }
+  .instruction-icon{
+    background-color: $secondary;
+    padding: 2rem;
+    i{
+      font-size: 8rem;
+    }
+    .battle{
+      color: #333;
+    }
+  }
+}
+
+// user profile container 
+.userprofile-container{
+  width: 100%;
+  background-color: $secondary;
+  border: .1rem solid #ddd;
+  padding: 1rem;
+  border-radius:.6rem;
+  h4{
+    margin-left:1rem;
+  }
+  img{
+    width: 5rem;
+    border-radius:50%;
+  }
+}
+
+.battle-button-container{
+  margin: 3rem 0;
+}
+.battle-now{
+  padding: .8rem 4rem;
+  letter-spacing: .2rem;
+  font-size: 2rem;
+  background-color: #000;
+  border-radius:.6rem;
+  a{
+    color: #fff;
+  }
+}
+
+// user profile container ends here 
+// battle container end here 
+
