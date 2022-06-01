@@ -1,0 +1,226 @@
+.container {
+  background-color: red;
+}
+
+/* common */
+.loading {
+  font-size: 84px;
+  font-family: 'Poppins',sans-serif;
+  font-weight: 800;
+  text-align: center;
+}
+
+.loading span {
+  display: inline-block;
+  margin: 0 -.05em;
+}
+
+/* code #3 */
+.loading03 span {
+  margin: 0 -.075em;
+  -webkit-animation: loading03 .7s infinite alternate;
+          animation: loading03 .7s infinite alternate;
+}
+
+.loading03 span:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+
+.loading03 span:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.loading03 span:nth-child(4) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.loading03 span:nth-child(5) {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.loading03 span:nth-child(6) {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.loading03 span:nth-child(7) {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+@-webkit-keyframes loading03 {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
+
+@keyframes loading03 {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html body {
+  font-size: 1.7rem;
+}
+
+.flex-row, .navigation-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-row-center, .header, .card-container figure {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.primary-bold {
+  font-weight: 700;
+  color: #bb2e1f;
+}
+
+#root {
+  width: 100%;
+}
+
+#root .navigation-bar {
+  padding: 2% 11%;
+}
+
+#root main {
+  padding: 2% 11%;
+}
+
+#root a {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+}
+
+#root button {
+  border: none;
+  background: transparent;
+  display: inline-block;
+}
+
+#root .active-menu {
+  color: #bb2e1f;
+  font-weight: 700;
+}
+
+.navigation-bar nav a {
+  margin-right: 2rem;
+}
+
+.header nav button {
+  margin: 0 3.2rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.cards-wrapper {
+  padding: 2rem 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.card-container {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: #ebebeb;
+}
+
+.card-container .index {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 2rem 0;
+}
+
+.card-container figure img {
+  width: 15rem;
+}
+
+.card-container h4 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.card-container .username {
+  font-size: 1.6rem;
+}
+
+.card-container p {
+  margin: 1rem 0;
+}
+
+.card-container p i {
+  margin-right: 1rem;
+  display: inline-block;
+}
+
+.card-container .user i {
+  color: #ffbf74;
+}
+
+.card-container .star i {
+  color: #ffd700;
+}
+
+.card-container .branch i {
+  color: #81c3f5;
+}
+
+.card-container .issues i {
+  color: #f18a93;
+}
+
+.card-container p {
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+/*# sourceMappingURL=style.css.map */
