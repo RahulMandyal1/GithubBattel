@@ -80,7 +80,7 @@ function UserProfileGenerator(props) {
             {playerScore > playerTwoScore ? "Winner" : "Loser"}
           </h4>
           <img src={player.avatar_url} alt="players profile"></img>
-          <h6>{playerScore}</h6>
+          <h6> Score : {playerScore}</h6>
           <h2 className="username">{player.login}</h2>
         </div>
         <p>

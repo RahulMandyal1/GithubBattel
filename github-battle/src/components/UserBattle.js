@@ -27,8 +27,11 @@ export default class UserBattle extends Component {
     event.preventDefault();
     let name = event.target.name;
     let user = this.state[name];
-    let getUser = fetch(`https://api.github.com/users/${user}`)
-      .then((res) => res.json())
+    fetch(`https://api.github.com/users/${user}`)
+      .then((res) => {
+        console.log(" this is the response" , res);
+       return  res.json()
+      })
       .then((data) => {
         if (data.message === "Not Found") {
           return this.setState({
@@ -37,9 +40,11 @@ export default class UserBattle extends Component {
             },
           });
         }
-
         this.setState({
           [name + "Data"]: data,
+          errors: {
+            [name + "Err"]: "",
+          },
         });
       });
   };
