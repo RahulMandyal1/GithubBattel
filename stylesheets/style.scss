@@ -1,0 +1,347 @@
+@import "loader";
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  body {
+    font-size: 1.7rem;
+  }
+}
+
+// all the color palletes used  in  the whole project
+$primary: #bb2e1f;
+$secondary: #ebebeb;
+$black: #000;
+$tertiary: #222;
+
+
+.user{
+  color: #EF7373;
+}
+.followers  {
+  color: #81C3F5;
+}
+.following{
+  color: green;
+}
+
+.light-black{
+  color: #333;
+}
+// all common used classes
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-row-center {
+  display: flex;
+  justify-content: center;
+}
+
+.primary-bold {
+  font-weight: 700;
+  color: $primary;
+}
+
+.flex-46{
+  flex:  0 1 46%;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.heading{
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+.users{
+  color:#FFBF74 ;
+}
+
+.winner{
+  color:  #FFD700;
+}
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error{
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #cd301f;
+  display: block;
+  margin: 1rem 0;
+}
+
+.col-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+// all the basic general styles
+#root {
+  width: 100%;
+  .navigation-bar {
+    padding: 2% 11%;
+  }
+  main {
+    padding: 2% 11%;
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: $black;
+  }
+  button {
+    border: none;
+    display: inline-block;
+  }
+
+  .active-menu {
+    color: $primary;
+    font-weight: 700;
+  }
+}
+// navigation bar start from here
+.navigation-bar {
+  @extend .flex-row;
+  nav {
+    a {
+      margin-right: 2rem;
+    }
+  }
+}
+//navigation bar styling ends here
+
+// button header starts  here
+.header {
+  button{
+    background-color: transparent
+  }
+  @extend .flex-row-center;
+  nav {
+    button {
+      margin: 0 3.2rem;
+      font-weight: 500;
+      color: $black;
+    }
+  }
+}
+//button header ends here
+
+//cards styling starts  here
+
+.cards-wrapper {
+  padding: 2rem 0 ;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 3rem;
+  align-items: flex-start;
+}
+
+.card-container {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: $secondary;
+  .index{
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 2rem 0;
+  }
+  figure{
+      @extend .flex-row-center;
+      img{
+          width: 15rem;
+      }
+  }
+  h4 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 1rem 0 ;
+  }
+  .username{
+    font-size: 1.6rem;
+  }
+  p {
+    margin: 1rem 0;
+    i {
+      margin-right: 1rem;
+      display: inline-block;
+    }
+  }
+  .user {
+    i {
+      color: #ffbf74;
+    }
+  }
+  .star {
+    i {
+      color: #ffd700;
+    }
+  }
+  .branch {
+    i {
+      color: #81c3f5;
+    }
+  }
+  .issues {
+    i {
+      color: #f18a93;
+    }
+  }
+  p {
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+}
+
+// battle container start from here 
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  h2{
+    font-size: 2rem;
+    color: #333;
+  }
+}
+
+.usernameInput-container{
+  h2{
+    text-align: center;
+  }
+}
+
+.form-group{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0 ;
+  input{
+    padding: .6rem;
+    flex:  0 1 45%;
+    border: .1rem solid #ddd;
+  }
+  button{
+   flex:  0 1 45%;
+   background-color: $secondary;
+   border: .1rem solid red;
+  }
+}
+
+//instruction-container 
+
+.instruction-container{
+  padding: 4% 0;
+  .instruction-card{
+    h2{
+      text-align: center;
+      margin: 2rem 0;
+      color: #333;
+    }
+  }
+  .instruction-icon{
+    background-color: $secondary;
+    padding: 2rem;
+    i{
+      font-size: 8rem;
+    }
+    .battle{
+      color: #333;
+    }
+  }
+}
+
+// user profile container 
+.userprofile-container{
+  width: 100%;
+  background-color: $secondary;
+  border: .1rem solid #ddd;
+  padding: 1rem;
+  border-radius:.6rem;
+  h4{
+    margin-left:1rem;
+  }
+  img{
+    width: 5rem;
+    border-radius:50%;
+  }
+}
+
+.battle-button-container{
+  margin: 3rem 0;
+}
+.battle-now{
+  padding: .8rem 4rem;
+  letter-spacing: .2rem;
+  font-size: 2rem;
+  background-color:$secondary;
+  border-radius:.6rem;
+  a{
+    color: #fff;
+  }
+}
+
+// user profile container ends here 
+// battle container end here 
+
+
+// Result battle starts here 
+.result-container{
+  padding: 2% 6%;
+  @extend .flex-row-center;
+  .result-card{
+    margin: 0 4rem;
+    background-color: $secondary;
+    padding: 2rem 4rem;
+    .col-center{
+      display : flex;
+      flex-direction: column;
+      justify-content : center;
+      align-items : center;
+    }
+    img{
+      width: 15rem;
+      margin: 1rem;
+    }
+    .winner{
+      font-size: 2rem;
+      font-weight: 600;
+      color: #222;
+    }
+    h6{
+      margin: 1rem 0;
+    }
+    .username{
+      color: $primary;
+    }
+    i{
+      margin-right:1rem;
+      font-size: 1.6rem;
+    }
+    p{
+      margin: 1rem 0;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+// Result battle ends here 
