@@ -7,7 +7,9 @@ export default function Main() {
   return (
     <Switch>
       <Route path="/" exact component={Popular} />
-      <Route path="/battle" exact component={UserBattle} />
+      <Route path="/battle" exact>
+        <UserBattle />
+      </Route>
       <Route path="/battle/results" component={BattleResult} />
     </Switch>
   );

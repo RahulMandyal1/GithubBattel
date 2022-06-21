@@ -1,72 +1,46 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-export default class UserBattle extends Component {
-  constructor() {
-    super();
-    this.state = {
-      firstUser: "",
-      secondUser: "",
-      firstUserData: null,
-      secondUserData: null,
-      errors: {
-        firstUserErr: "",
-        secondUserErr: "",
-      },
-    };
-  }
+import { useState } from "react";
 
-  changeState = ({ target }) => {
-    let { name, value } = target;
-    this.setState({
-      [name]: value,
-    });
-  };
+export default function UserBattle() {
+  let [users, setgithubUsername] = useState({ firstUser: "", secondUser: "" });
+  let [usersData, setUserData] = useState({
+    firstUserData: null,
+    secondUserData: null,
+  });
+  let [errors, setErrors] = useState({ firstUserErr: "", secondUserErr: "" });
 
-  // find the  user and thorw meaningful error if not found
-  findGithubUser = (event) => {
+  // function to find  github users
+  function findGithubUser(event) {
     event.preventDefault();
     let name = event.target.name;
-    let user = this.state[name];
+    let user = users[name];
     fetch(`https://api.github.com/users/${user}`)
       .then((res) => {
-        console.log(" this is the response" , res);
-       return  res.json()
+        return res.json();
       })
       .then((data) => {
         if (data.message === "Not Found") {
-          return this.setState({
-            errors: {
-              [name + "Err"]: "User is not found invalid username",
-            },
+          return setErrors({
+            ...errors,
+            [name + "Err"]: "User is not found invalid username",
           });
         }
-        this.setState({
-          [name + "Data"]: data,
-          errors: {
-            [name + "Err"]: "",
-          },
-        });
+        setUserData({ ...usersData, [name + "Data"]: data });
+        setErrors({ ...errors, [name + "Err"]: "" });
       });
-  };
+  }
 
-  //delete User data
-  deleteUserData = (userNameData) => {
-    this.setState({
-      [userNameData]: null,
-    });
-  };
-
-  //show battel button only when if both user is found and
-  // have user data for  the both users
-  showbattleButton = () => {
-    if (this.state.firstUserData && this.state.secondUserData) {
+  // show battle button once we have both users data
+  function showbattleButton() {
+    if (usersData.firstUserData && usersData.secondUserData) {
       return (
         <div className="flex-row-center w-100 battle-button-container">
           <button className="battle-now" id="white">
             <Link
               to={{
                 pathname: "/battle/results",
-                search: `?playerOne=${this.state.firstUser}&playerTwo=${this.state.secondUser}`,
+                search: `?playerOne=${users.firstUser}&playerTwo=${users.secondUser}`,
               }}
             >
               Battle
@@ -75,86 +49,102 @@ export default class UserBattle extends Component {
         </div>
       );
     }
-  };
-
-  render() {
-    let { firstUserErr, secondUserErr } = this.state.errors;
-    return (
-      <div className="container">
-        <InstructioforUsers />
-        {/* //  this is to take  the username input from the user  */}
-        <div className="usernameInput-container">
-          <h2>Players</h2>
-          <div className="flex-row">
-            <form className="flex-46">
-              <h3>Player one</h3>
-              <div className="form-group">
-                {this.state.firstUserData === null ? (
-                  <>
-                    <input
-                      type="text"
-                      name="firstUser"
-                      placeholder="github username"
-                      onChange={this.changeState}
-                      value={this.state.firstUser}
-                    />
-                    <button
-                      type="submit"
-                      name="firstUser"
-                      onClick={this.findGithubUser}
-                    >
-                      submit
-                    </button>
-                  </>
-                ) : (
-                  <UserProfilePreview
-                    userProfile={this.state.firstUserData}
-                    deleteUserData={this.deleteUserData}
-                    userName="firstUserData"
-                  />
-                )}
-              </div>
-              <p className="error">{firstUserErr}</p>
-            </form>
-
-            <form className="flex-46">
-              <h3>Player two</h3>
-              <div className="form-group">
-                {this.state.secondUserData === null ? (
-                  <>
-                    <input
-                      type="text"
-                      name="secondUser"
-                      placeholder="github username"
-                      onChange={this.changeState}
-                      value={this.state.secondUser}
-                    />
-                    <button
-                      type="submit"
-                      name="secondUser"
-                      onClick={this.findGithubUser}
-                    >
-                      submit
-                    </button>
-                  </>
-                ) : (
-                  <UserProfilePreview
-                    userProfile={this.state.secondUserData}
-                    deleteUserData={this.deleteUserData}
-                    userName="secondUserData"
-                  />
-                )}
-              </div>
-              <p className="error">{secondUserErr}</p>
-            </form>
-          </div>
-        </div>
-        {this.showbattleButton()}
-      </div>
-    );
   }
+
+  // function  deleteUserData
+  function deleteUserData(userName) {
+    setUserData({ ...usersData, [userName]: null });
+  }
+
+  return (
+    <div className="container">
+      <InstructioforUsers />
+      <div className="usernameInput-container">
+        <h2>Players</h2>
+        <div className="flex-row">
+          <form className="flex-46">
+            <h3>Player one</h3>
+            <div className="form-group">
+              {usersData.firstUserData === null ? (
+                <>
+                  <input
+                    type="text"
+                    name="firstUser"
+                    placeholder="github username"
+                    onChange={(e) => {
+                      setgithubUsername({
+                        ...users,
+                        firstUser: e.target.value,
+                      });
+                    }}
+                    value={users.firstUser}
+                  />
+                  <button
+                    type="submit"
+                    name="firstUser"
+                    onClick={(e) => {
+                      findGithubUser(e);
+                    }}
+                  >
+                    submit
+                  </button>
+                </>
+              ) : (
+                <UserProfilePreview
+                  userProfile={usersData.firstUserData}
+                  deleteUserData={deleteUserData}
+                  userName="firstUserData"
+                />
+              )}
+            </div>
+            <p className="error">{errors.firstUserErr}</p>
+          </form>
+
+          <form className="flex-46">
+            <h3>Player two</h3>
+            <div className="form-group">
+              {usersData.secondUserData === null ? (
+                <>
+                  <input
+                    type="text"
+                    name="secondUser"
+                    placeholder="github username"
+                    onChange={(e) => {
+                      setgithubUsername({
+                        ...users,
+                        secondUser: e.target.value,
+                      });
+                    }}
+                    value={users.secondUser}
+                  />
+                  <button
+                    type="submit"
+                    name="secondUser"
+                    onClick={(e) => {
+                      findGithubUser(e);
+                    }}
+                  >
+                    submit
+                  </button>
+                </>
+              ) : (
+                <UserProfilePreview
+                  userProfile={usersData.secondUserData}
+                  deleteUserData={deleteUserData}
+                  userName="secondUserData"
+                />
+              )}
+            </div>
+            <p className="error">{errors.secondUserErr}</p>
+          </form>
+        </div>
+      </div>
+      {showbattleButton()}
+    </div>
+  );
 }
 
+// instruction for  the user
 function InstructioforUsers() {
   return (
     <>
@@ -187,6 +177,7 @@ function InstructioforUsers() {
   );
 }
 
+// to show user profile once we have the userData
 function UserProfilePreview(props) {
   let { userProfile, deleteUserData, userName } = props;
   return (
